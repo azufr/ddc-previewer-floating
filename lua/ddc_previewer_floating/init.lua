@@ -10,7 +10,7 @@ local GROUP_NAME = "ddc-preview"
 function M.enable()
   local view = View.new()
   local function open()
-    utils.debounse("view_open", function()
+    utils.debounce("view_open", function()
       view:open()
     end, 100)
   end
