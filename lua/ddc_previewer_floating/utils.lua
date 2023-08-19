@@ -31,8 +31,9 @@ end
 ---@param fn function
 ---@param time number milliseconds
 function M.debounse(name, fn, time)
+  local uv = vim.uv or vim.loop
   timer_reset(name)
-  timer[name] = vim.uv.new_timer()
+  timer[name] = uv.new_timer()
   timer[name]:start(
     time,
     0,
