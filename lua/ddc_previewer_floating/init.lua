@@ -45,7 +45,10 @@ function M.enable()
 end
 
 function M.disable()
-  vim.api.nvim_del_augroup_by_name(GROUP_NAME)
+  local group = vim.api.nvim_create_augroup(GROUP_NAME, {
+    clear = false,
+  })
+  vim.api.nvim_del_augroup_by_id(group)
 end
 
 M.setup = config.setup
