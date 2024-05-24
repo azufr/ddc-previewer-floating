@@ -10,7 +10,7 @@ local GROUP_NAME = "ddc-preview"
 function M.enable()
   local view = View.new()
   local function open()
-    utils.debounse("view_open", function()
+    utils.debounce("view_open", function()
       view:open()
     end, 100)
   end
@@ -50,7 +50,10 @@ function M.enable()
 end
 
 function M.disable()
-  vim.api.nvim_del_augroup_by_name(GROUP_NAME)
+  local group = vim.api.nvim_create_augroup(GROUP_NAME, {
+    clear = false,
+  })
+  vim.api.nvim_del_augroup_by_id(group)
 end
 
 M.setup = config.setup

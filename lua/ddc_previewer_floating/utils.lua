@@ -30,7 +30,7 @@ end
 ---@param name string
 ---@param fn function
 ---@param time number milliseconds
-function M.debounse(name, fn, time)
+function M.debounce(name, fn, time)
   timer_reset(name)
   timer[name] = vim.uv.new_timer()
   timer[name]:start(
